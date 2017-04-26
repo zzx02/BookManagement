@@ -1,5 +1,8 @@
 #ifndef LOGINDIALOG_H
 #define LOGINDIALOG_H
+#include "ui_logindialog.h"
+#include "database.h"
+#include "registerdialog.h"
 
 #include <QDialog>
 
@@ -17,6 +20,11 @@ public:
 
 private:
     Ui::LoginDialog *ui;
+    database db;
+
+private slots:
+   void Login_Attempt();
+   void Register();
 };
 
 #endif // LOGINDIALOG_H

@@ -42,15 +42,19 @@ public:
     QLineEdit *lineEdit_3;
     QPushButton *buttonConfirm;
     QPushButton *buttonCancel;
+    QWidget *horizontalLayoutWidget_4;
+    QHBoxLayout *f;
+    QLabel *label_4;
+    QLineEdit *department;
 
     void setupUi(QDialog *Dialog)
     {
         if (Dialog->objectName().isEmpty())
             Dialog->setObjectName(QStringLiteral("Dialog"));
-        Dialog->resize(300, 200);
+        Dialog->resize(300, 250);
         groupBox = new QGroupBox(Dialog);
         groupBox->setObjectName(QStringLiteral("groupBox"));
-        groupBox->setGeometry(QRect(10, 10, 271, 171));
+        groupBox->setGeometry(QRect(10, 10, 271, 231));
         horizontalLayoutWidget = new QWidget(groupBox);
         horizontalLayoutWidget->setObjectName(QStringLiteral("horizontalLayoutWidget"));
         horizontalLayoutWidget->setGeometry(QRect(20, 30, 231, 22));
@@ -71,7 +75,7 @@ public:
         e->setStretch(1, 10);
         horizontalLayoutWidget_2 = new QWidget(groupBox);
         horizontalLayoutWidget_2->setObjectName(QStringLiteral("horizontalLayoutWidget_2"));
-        horizontalLayoutWidget_2->setGeometry(QRect(20, 70, 231, 22));
+        horizontalLayoutWidget_2->setGeometry(QRect(20, 110, 231, 22));
         r = new QHBoxLayout(horizontalLayoutWidget_2);
         r->setObjectName(QStringLiteral("r"));
         r->setContentsMargins(0, 0, 0, 0);
@@ -82,6 +86,7 @@ public:
 
         password = new QLineEdit(horizontalLayoutWidget_2);
         password->setObjectName(QStringLiteral("password"));
+        password->setEchoMode(QLineEdit::Password);
 
         r->addWidget(password);
 
@@ -89,7 +94,7 @@ public:
         r->setStretch(1, 10);
         horizontalLayoutWidget_3 = new QWidget(groupBox);
         horizontalLayoutWidget_3->setObjectName(QStringLiteral("horizontalLayoutWidget_3"));
-        horizontalLayoutWidget_3->setGeometry(QRect(20, 110, 231, 22));
+        horizontalLayoutWidget_3->setGeometry(QRect(20, 150, 231, 22));
         t = new QHBoxLayout(horizontalLayoutWidget_3);
         t->setObjectName(QStringLiteral("t"));
         t->setContentsMargins(0, 0, 0, 0);
@@ -100,6 +105,7 @@ public:
 
         lineEdit_3 = new QLineEdit(horizontalLayoutWidget_3);
         lineEdit_3->setObjectName(QStringLiteral("lineEdit_3"));
+        lineEdit_3->setEchoMode(QLineEdit::Password);
 
         t->addWidget(lineEdit_3);
 
@@ -107,10 +113,29 @@ public:
         t->setStretch(1, 10);
         buttonConfirm = new QPushButton(groupBox);
         buttonConfirm->setObjectName(QStringLiteral("buttonConfirm"));
-        buttonConfirm->setGeometry(QRect(40, 140, 75, 23));
+        buttonConfirm->setGeometry(QRect(40, 190, 75, 23));
         buttonCancel = new QPushButton(groupBox);
         buttonCancel->setObjectName(QStringLiteral("buttonCancel"));
-        buttonCancel->setGeometry(QRect(160, 140, 75, 23));
+        buttonCancel->setGeometry(QRect(160, 190, 75, 23));
+        horizontalLayoutWidget_4 = new QWidget(groupBox);
+        horizontalLayoutWidget_4->setObjectName(QStringLiteral("horizontalLayoutWidget_4"));
+        horizontalLayoutWidget_4->setGeometry(QRect(20, 70, 231, 22));
+        f = new QHBoxLayout(horizontalLayoutWidget_4);
+        f->setObjectName(QStringLiteral("f"));
+        f->setContentsMargins(0, 0, 0, 0);
+        label_4 = new QLabel(horizontalLayoutWidget_4);
+        label_4->setObjectName(QStringLiteral("label_4"));
+
+        f->addWidget(label_4);
+
+        department = new QLineEdit(horizontalLayoutWidget_4);
+        department->setObjectName(QStringLiteral("department"));
+        department->setEchoMode(QLineEdit::Normal);
+
+        f->addWidget(department);
+
+        f->setStretch(0, 4);
+        f->setStretch(1, 10);
 
         retranslateUi(Dialog);
 
@@ -119,13 +144,14 @@ public:
 
     void retranslateUi(QDialog *Dialog)
     {
-        Dialog->setWindowTitle(QApplication::translate("Dialog", "Dialog", Q_NULLPTR));
+        Dialog->setWindowTitle(QApplication::translate("Dialog", "用户注册", Q_NULLPTR));
         groupBox->setTitle(QApplication::translate("Dialog", "\347\224\250\346\210\267\346\263\250\345\206\214", Q_NULLPTR));
         label->setText(QApplication::translate("Dialog", "\347\224\250\346\210\267\345\220\215\357\274\232", Q_NULLPTR));
         label_2->setText(QApplication::translate("Dialog", "\345\257\206\347\240\201\357\274\232", Q_NULLPTR));
         label_3->setText(QApplication::translate("Dialog", "\347\241\256\350\256\244\345\257\206\347\240\201\357\274\232", Q_NULLPTR));
         buttonConfirm->setText(QApplication::translate("Dialog", "\347\241\256\350\256\244", Q_NULLPTR));
         buttonCancel->setText(QApplication::translate("Dialog", "\345\217\226\346\266\210", Q_NULLPTR));
+        label_4->setText(QApplication::translate("Dialog", "\345\255\246\351\231\242\357\274\232", Q_NULLPTR));
     } // retranslateUi
 
 };

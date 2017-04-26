@@ -1,1 +1,5 @@
-<RCC/>
+<RCC>
+    <qresource prefix="/">
+        <file>res/book.png</file>
+    </qresource>
+</RCC>

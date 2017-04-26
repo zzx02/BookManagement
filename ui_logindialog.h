@@ -40,7 +40,7 @@ public:
     QWidget *horizontalLayoutWidget;
     QHBoxLayout *horizontalLayout;
     QPushButton *buttonLogin;
-    QPushButton *pushButton_2;
+    QPushButton *buttonReg;
 
     void setupUi(QDialog *LoginDialog)
     {
@@ -96,7 +96,6 @@ public:
 
         verticalLayout->addLayout(horizontalLayout_3);
 
-        verticalLayoutWidget->raise();
         horizontalLayoutWidget = new QWidget(LoginDialog);
         horizontalLayoutWidget->setObjectName(QStringLiteral("horizontalLayoutWidget"));
         horizontalLayoutWidget->setGeometry(QRect(20, 230, 361, 41));
@@ -113,12 +112,12 @@ public:
 
         horizontalLayout->addWidget(buttonLogin);
 
-        pushButton_2 = new QPushButton(horizontalLayoutWidget);
-        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-        sizePolicy1.setHeightForWidth(pushButton_2->sizePolicy().hasHeightForWidth());
-        pushButton_2->setSizePolicy(sizePolicy1);
+        buttonReg = new QPushButton(horizontalLayoutWidget);
+        buttonReg->setObjectName(QStringLiteral("buttonReg"));
+        sizePolicy1.setHeightForWidth(buttonReg->sizePolicy().hasHeightForWidth());
+        buttonReg->setSizePolicy(sizePolicy1);
 
-        horizontalLayout->addWidget(pushButton_2);
+        horizontalLayout->addWidget(buttonReg);
 
 
         retranslateUi(LoginDialog);
@@ -128,12 +127,12 @@ public:
 
     void retranslateUi(QDialog *LoginDialog)
     {
-        LoginDialog->setWindowTitle(QApplication::translate("LoginDialog", "Dialog", Q_NULLPTR));
+        LoginDialog->setWindowTitle(QApplication::translate("LoginDialog", "用户登录", Q_NULLPTR));
         groupBox->setTitle(QApplication::translate("LoginDialog", "\345\233\276\344\271\246\347\256\241\347\220\206\347\263\273\347\273\237", Q_NULLPTR));
         label->setText(QApplication::translate("LoginDialog", "\347\224\250\346\210\267\345\220\215:", Q_NULLPTR));
         label_2->setText(QApplication::translate("LoginDialog", "  \345\257\206\347\240\201:", Q_NULLPTR));
         buttonLogin->setText(QApplication::translate("LoginDialog", "\347\231\273\345\275\225", Q_NULLPTR));
-        pushButton_2->setText(QApplication::translate("LoginDialog", "\346\263\250\345\206\214", Q_NULLPTR));
+        buttonReg->setText(QApplication::translate("LoginDialog", "\346\263\250\345\206\214", Q_NULLPTR));
     } // retranslateUi
 
 };
