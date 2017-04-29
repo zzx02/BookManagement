@@ -16,7 +16,8 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     database.cpp \
     logindialog.cpp \
-    registerdialog.cpp
+    registerdialog.cpp \
+    selfcenterdialog.cpp
 
 HEADERS  += mainwindow.h \
     ui_mainwindow.h \
@@ -24,11 +25,14 @@ HEADERS  += mainwindow.h \
     logindialog.h \
     ui_logindialog.h \
     registerdialog.h \
-    ui_registerdialog.h
+    ui_registerdialog.h \
+    selfcenterdialog.h \
+    ui_selfcenterdialog.h
 
 FORMS    += mainwindow.ui \
     logindialog.ui \
-    registerdialog.ui
+    registerdialog.ui \
+    selfcenterdialog.ui
 
 RESOURCES += \
     resource.qrc

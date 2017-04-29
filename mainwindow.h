@@ -1,7 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-
+#include "selfcenterdialog.h"
 #include "ui_mainwindow.h"
 #include "database.h"
 #include <QMainWindow>
@@ -33,6 +33,7 @@ private slots:
     void searchBook();
     void clearText();
     void updateBorrow();
+    void OpenManage();
 };
 
 #endif // MAINWINDOW_H

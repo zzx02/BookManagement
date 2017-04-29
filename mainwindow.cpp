@@ -13,9 +13,18 @@ MainWindow::MainWindow(QDialog* logindialog, QWidget *parent) :
 //    mytable = new QSqlTableModel;
 //    db.showSelect("", mytable);
 //    view ->setModel(mytable);
+    price1 ->setValidator(new QIntValidator(0, 1000,this));
+    price2 ->setValidator(new QIntValidator(0, 1000,this));
+    boxYear->addItem("    ");
+    boxYear2->addItem("    ");
+    for(int i=0;i<100;i++){
+        boxYear->addItem(QString::number(2017 - i));
+        boxYear2->addItem(QString::number(2017 - i));
+    }
      connect(checkButton, &QPushButton::clicked, this, &MainWindow::searchBook);
      connect(clearButton, &QPushButton::clicked, this, &MainWindow::clearText);
      connect(borrowButton, &QPushButton::clicked, this, &MainWindow::updateBorrow );
+     connect(selfCenter, &QPushButton::clicked, this, &MainWindow::OpenManage);
      connect(login, SIGNAL(sendusername(QString )), this, SLOT(SetUsername(QString )));
 
 }
@@ -33,7 +42,25 @@ void MainWindow::searchBook()
             + "title like '%" + nameBook->text() + "%' and "
             + "author like '%" + nameAuthor->text() + "%' and "
             + "press like '%" + namePublisher->text() + "%'";
-    // qDebug() << Filter;
+    // Add Year constraints
+    if (boxYear->currentText().compare("    ") != 0  && boxYear2->currentText().compare("    ") != 0)
+    Filter += " and publish_year >= " + boxYear->currentText() + " and "
+            + "publish_year <= " + boxYear2->currentText();
+    else if (boxYear->currentText().compare("    ") != 0)
+        Filter += " and publish_year >= " + boxYear->currentText();
+    else if (boxYear2->currentText().compare("    ") != 0)
+        Filter += " and publish_year <= " + boxYear2->currentText();
+
+    //
+    if (price1->text().compare("") != 0 && price2->text().compare("") != 0)
+    Filter += " and price >= " + price1->text() + " and "
+            + "price <= " + price2->text();
+    else if (price1->text().compare("") != 0)
+        Filter += " and price >= " + price1->text();
+    else if (price2->text().compare("") != 0)
+        Filter += " and price <= " + price2->text();
+
+     qDebug() << Filter;
     mytable = new QSqlTableModel;
     db.showSelect(Filter, mytable);
     view -> setModel(mytable);
@@ -62,6 +89,8 @@ void MainWindow::clearText()
     namePublisher->clear();
     price1->clear();
     price2->clear();
+    boxYear -> setCurrentIndex(0);
+    boxYear2 -> setCurrentIndex(0);
     return ;
 }
 
@@ -89,5 +118,12 @@ void MainWindow::updateBorrow()
          QMessageBox::information(this,tr("成功"),tr("借书成功"),QMessageBox::Yes);
     }
     else QMessageBox::information(this,tr("注意"),tr("借书失败"),QMessageBox::Yes);
+    searchBook();
+}
+
+void MainWindow::OpenManage()
+{
+    Selfcenterdialog s(username);
+    s.exec();
     searchBook();
 }
