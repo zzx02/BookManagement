@@ -73,6 +73,7 @@ public:
     QLabel *conditionLabel;
     QLabel *usernameLabel;
     QLabel *timeLabel;
+    QPushButton *adminCenter;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -82,6 +83,11 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
         MainWindow->resize(850, 600);
+        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(MainWindow->sizePolicy().hasHeightForWidth());
+        MainWindow->setSizePolicy(sizePolicy);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         horizontalLayoutWidget = new QWidget(centralWidget);
@@ -275,13 +281,13 @@ public:
         view->setSortingEnabled(true);
         selfCenter = new QPushButton(centralWidget);
         selfCenter->setObjectName(QStringLiteral("selfCenter"));
-        selfCenter->setGeometry(QRect(750, 490, 75, 23));
+        selfCenter->setGeometry(QRect(750, 480, 75, 23));
         borrowButton = new QPushButton(centralWidget);
         borrowButton->setObjectName(QStringLiteral("borrowButton"));
         borrowButton->setGeometry(QRect(750, 100, 75, 23));
         verticalLayoutWidget = new QWidget(centralWidget);
         verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(740, 390, 101, 91));
+        verticalLayoutWidget->setGeometry(QRect(740, 380, 101, 91));
         verticalLayout_2 = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout_2->setSpacing(6);
         verticalLayout_2->setContentsMargins(11, 11, 11, 11);
@@ -302,6 +308,9 @@ public:
 
         verticalLayout_2->addWidget(timeLabel);
 
+        adminCenter = new QPushButton(centralWidget);
+        adminCenter->setObjectName(QStringLiteral("adminCenter"));
+        adminCenter->setGeometry(QRect(750, 510, 75, 23));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -338,6 +347,7 @@ public:
         conditionLabel->setText(QApplication::translate("MainWindow", "\345\275\223\345\211\215\347\212\266\346\200\201\357\274\232", Q_NULLPTR));
         usernameLabel->setText(QApplication::translate("MainWindow", "\347\224\250\346\210\267\345\220\215\357\274\232", Q_NULLPTR));
         timeLabel->setText(QApplication::translate("MainWindow", "currenttime", Q_NULLPTR));
+        adminCenter->setText(QApplication::translate("MainWindow", "\347\256\241\347\220\206\345\221\230\345\205\245\345\217\243", Q_NULLPTR));
     } // retranslateUi
 
 };

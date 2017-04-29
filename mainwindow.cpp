@@ -25,8 +25,8 @@ MainWindow::MainWindow(QDialog* logindialog, QWidget *parent) :
      connect(clearButton, &QPushButton::clicked, this, &MainWindow::clearText);
      connect(borrowButton, &QPushButton::clicked, this, &MainWindow::updateBorrow );
      connect(selfCenter, &QPushButton::clicked, this, &MainWindow::OpenManage);
+     connect(adminCenter, &QPushButton::clicked, this, &MainWindow::OpenAdminCenter);
      connect(login, SIGNAL(sendusername(QString )), this, SLOT(SetUsername(QString )));
-
 }
 
 MainWindow::~MainWindow()
@@ -104,14 +104,21 @@ void MainWindow::SetUsername(QString LoginUsername)
     else
         conditionLabel->setText("状态：管理员");
     timeLabel -> setText("时间: " + currenttime.toString("yyyy-MM-dd"));
+    if (username != "admin") adminCenter->setDisabled(true);
+
 }
 
 void MainWindow::updateBorrow()
 {
     int tmpindex = view->currentIndex().row();
+    if (mytable == NULL)
+    {
+        QMessageBox::information(this,tr("注意"),tr("本书已无库存"),QMessageBox::Yes);
+        return;
+    }
     QSqlRecord currentRecord=mytable->record(tmpindex);
     QVariant currentData = currentRecord.value(0);
-    if (currentRecord.value(7) == 0)
+    if (currentRecord.value(7) == 0 || currentRecord.value(7) == QVariant::Invalid)
          QMessageBox::information(this,tr("注意"),tr("本书已无库存"),QMessageBox::Yes);
     else if (db.borrowbook(currentData, username))
     {
@@ -127,3 +134,11 @@ void MainWindow::OpenManage()
     s.exec();
     searchBook();
 }
+
+void MainWindow::OpenAdminCenter()
+{
+    AdminCenterdialog s;
+    s.exec();
+    searchBook();
+}
+

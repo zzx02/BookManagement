@@ -21,7 +21,7 @@ bool database::connect(const QString &dbname)
        QMessageBox::critical(0, QObject::tr("Error"),QObject::tr("The database reported an error: %1").arg(err.text()));
        return false;
     }
-
+    qDebug() << "connect";
 //    QSqlQuery query;
 //    query.exec("SELECT * FROM users");
 //    query.first();
@@ -71,6 +71,7 @@ bool database::checkLogin(const QString username, const QString password)
 
 void database::showSelect(const QString filter, QSqlTableModel* model)
 {
+
     model->setTable("user_book");
     model->setSort(1, Qt::AscendingOrder);
     model->setFilter(filter);
@@ -84,7 +85,7 @@ void database::showSelect(const QString filter, QSqlTableModel* model)
     model->setHeaderData(7, Qt::Horizontal, tr("库存"));
     model->setHeaderData(8, Qt::Horizontal, tr("总量"));
     model->select();
-    return ;
+
 }
 //category, title, author, publish_year, price, stock, total
 
@@ -146,7 +147,7 @@ bool database::borrowbook(QVariant bookno, QString Username)
             query.bindValue(":bookcount", 1);
             query.bindValue(":borrowtime", currenttime.toString("yyyy-MM-dd"));
             query.bindValue(":returntime", returntime.toString("yyyy-MM-dd"));
-//            qDebug() << bookno.toString() ;
+            qDebug() << bookno.toString() ;
             query.exec();
         }
         QSqlQuery update;

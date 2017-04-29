@@ -31,6 +31,7 @@ void Selfcenterdialog::returnBook()
     QSqlRecord currentRecord=model->record(tmpindex);
     QVariant currentData = currentRecord.value(0);
     db.ReturnBook(usrname, currentData);
+    QMessageBox::information(this,tr("成功"),tr("归还成功"),QMessageBox::Yes);
     model = new QSqlTableModel;
     QString Filter = " username = '" + usrname + "'";
     db.showMyBook(Filter, model);
@@ -46,6 +47,7 @@ void Selfcenterdialog::continueBorrow()
     QSqlRecord currentRecord=model->record(tmpindex);
     QVariant currentData = currentRecord.value(0);
     db.continueBorrow(usrname, currentData);
+    QMessageBox::information(this,tr("成功"),tr("续借成功"),QMessageBox::Yes);
     model = new QSqlTableModel;
     QString Filter = " username = '" + usrname + "'";
     db.showMyBook(Filter, model);

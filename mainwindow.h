@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include "selfcenterdialog.h"
+#include "admincenterdialog.h"
 #include "ui_mainwindow.h"
 #include "database.h"
 #include <QMainWindow>
@@ -34,6 +35,7 @@ private slots:
     void clearText();
     void updateBorrow();
     void OpenManage();
+    void OpenAdminCenter();
 };
 
 #endif // MAINWINDOW_H
