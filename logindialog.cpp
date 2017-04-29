@@ -1,14 +1,16 @@
 #include "logindialog.h"
 #include "database.h"
-
+#include <QDebug>
 #include<QMessageBox>
 
 LoginDialog::LoginDialog(QWidget *parent) :
     QDialog(parent)
 {
-    ui->setupUi(this);
-    connect(this->ui->buttonLogin, &QPushButton::clicked, this, &LoginDialog::Login_Attempt);
-    connect(this->ui->buttonReg, &QPushButton::clicked, this, &LoginDialog::Register);
+    qDebug() << "Everything OK";
+    this->setupUi(this);
+    connect(buttonLogin, &QPushButton::clicked, this, &LoginDialog::Login_Attempt);
+    connect(buttonReg, &QPushButton::clicked, this, &LoginDialog::Register);
+
 }
 
 LoginDialog::~LoginDialog()
@@ -18,23 +20,25 @@ LoginDialog::~LoginDialog()
 
 void LoginDialog::Login_Attempt()
 {
-  if(this->ui->username->text().trimmed()== tr("admin") &&
-     this->ui->password->text().trimmed()==tr("admin"))
+  if(username->text().trimmed()== tr("admin") &&
+     password->text().trimmed()==tr("admin"))
   {
+      emit sendusername(username->text().trimmed() );
       accept();
   }
-  else if (db.checkLogin(this->ui->username->text().trimmed(),
-                             this->ui->password->text().trimmed()))
+  else if (db.checkLogin(username->text().trimmed(),
+                             password->text().trimmed()))
   {
+      emit sendusername(username->text().trimmed() );
         accept();
   }
   else
   {
 //      QTextCodec::setCodecForTr( QTextCodec::codecForName("GBK") );
       QMessageBox::warning(this,tr("警告"),tr("用户名或密码错误!"),QMessageBox::Yes);
-      this->ui->username->clear();
-      this->ui->password->clear();
-      this->ui->username->setFocus();
+      username->clear();
+      password->clear();
+      username->setFocus();
   }
 }
 

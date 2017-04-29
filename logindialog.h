@@ -10,7 +10,7 @@ namespace Ui {
 class LoginDialog;
 }
 
-class LoginDialog : public QDialog
+class LoginDialog : public QDialog, public Ui_LoginDialog
 {
     Q_OBJECT
 
@@ -21,6 +21,8 @@ public:
 private:
     Ui::LoginDialog *ui;
     database db;
+signals:
+    void sendusername(QString username);
 
 private slots:
    void Login_Attempt();

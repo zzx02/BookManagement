@@ -37,6 +37,7 @@ public:
     QHBoxLayout *horizontalLayout_3;
     QLabel *label_2;
     QLineEdit *password;
+    QLabel *label_3;
     QWidget *horizontalLayoutWidget;
     QHBoxLayout *horizontalLayout;
     QPushButton *buttonLogin;
@@ -96,6 +97,10 @@ public:
 
         verticalLayout->addLayout(horizontalLayout_3);
 
+        label_3 = new QLabel(groupBox);
+        label_3->setObjectName(QStringLiteral("label_3"));
+        label_3->setGeometry(QRect(260, 60, 101, 91));
+        label_3->setPixmap(QPixmap(QString::fromUtf8(":/res/loginbook3.png")));
         horizontalLayoutWidget = new QWidget(LoginDialog);
         horizontalLayoutWidget->setObjectName(QStringLiteral("horizontalLayoutWidget"));
         horizontalLayoutWidget->setGeometry(QRect(20, 230, 361, 41));
@@ -131,6 +136,7 @@ public:
         groupBox->setTitle(QApplication::translate("LoginDialog", "\345\233\276\344\271\246\347\256\241\347\220\206\347\263\273\347\273\237", Q_NULLPTR));
         label->setText(QApplication::translate("LoginDialog", "\347\224\250\346\210\267\345\220\215:", Q_NULLPTR));
         label_2->setText(QApplication::translate("LoginDialog", "  \345\257\206\347\240\201:", Q_NULLPTR));
+        label_3->setText(QString());
         buttonLogin->setText(QApplication::translate("LoginDialog", "\347\231\273\345\275\225", Q_NULLPTR));
         buttonReg->setText(QApplication::translate("LoginDialog", "\346\263\250\345\206\214", Q_NULLPTR));
     } // retranslateUi

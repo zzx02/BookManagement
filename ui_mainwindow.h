@@ -64,8 +64,15 @@ public:
     QLabel *label_4;
     QComboBox *comboBox_2;
     QPushButton *checkButton;
-    QPushButton *pushButton_2;
+    QPushButton *clearButton;
     QTableView *view;
+    QPushButton *pushButton_3;
+    QPushButton *borrowButton;
+    QWidget *verticalLayoutWidget;
+    QVBoxLayout *verticalLayout_2;
+    QLabel *conditionLabel;
+    QLabel *usernameLabel;
+    QLabel *timeLabel;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -242,6 +249,7 @@ public:
 
         comboBox_2 = new QComboBox(horizontalLayoutWidget);
         comboBox_2->setObjectName(QStringLiteral("comboBox_2"));
+        comboBox_2->setEditable(false);
 
         horizontalLayout_6->addWidget(comboBox_2);
 
@@ -256,15 +264,44 @@ public:
         checkButton = new QPushButton(centralWidget);
         checkButton->setObjectName(QStringLiteral("checkButton"));
         checkButton->setGeometry(QRect(750, 20, 75, 23));
-        pushButton_2 = new QPushButton(centralWidget);
-        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-        pushButton_2->setGeometry(QRect(750, 50, 75, 23));
+        clearButton = new QPushButton(centralWidget);
+        clearButton->setObjectName(QStringLiteral("clearButton"));
+        clearButton->setGeometry(QRect(750, 50, 75, 23));
         view = new QTableView(centralWidget);
         view->setObjectName(QStringLiteral("view"));
         view->setGeometry(QRect(30, 100, 701, 431));
         view->setEditTriggers(QAbstractItemView::NoEditTriggers);
         view->setSelectionBehavior(QAbstractItemView::SelectRows);
-        view->setSortingEnabled(false);
+        view->setSortingEnabled(true);
+        pushButton_3 = new QPushButton(centralWidget);
+        pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
+        pushButton_3->setGeometry(QRect(750, 490, 75, 23));
+        borrowButton = new QPushButton(centralWidget);
+        borrowButton->setObjectName(QStringLiteral("borrowButton"));
+        borrowButton->setGeometry(QRect(750, 100, 75, 23));
+        verticalLayoutWidget = new QWidget(centralWidget);
+        verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
+        verticalLayoutWidget->setGeometry(QRect(740, 390, 101, 91));
+        verticalLayout_2 = new QVBoxLayout(verticalLayoutWidget);
+        verticalLayout_2->setSpacing(6);
+        verticalLayout_2->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
+        conditionLabel = new QLabel(verticalLayoutWidget);
+        conditionLabel->setObjectName(QStringLiteral("conditionLabel"));
+
+        verticalLayout_2->addWidget(conditionLabel);
+
+        usernameLabel = new QLabel(verticalLayoutWidget);
+        usernameLabel->setObjectName(QStringLiteral("usernameLabel"));
+
+        verticalLayout_2->addWidget(usernameLabel);
+
+        timeLabel = new QLabel(verticalLayoutWidget);
+        timeLabel->setObjectName(QStringLiteral("timeLabel"));
+
+        verticalLayout_2->addWidget(timeLabel);
+
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -284,17 +321,23 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "图书管理系统", Q_NULLPTR));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "\345\233\276\344\271\246\347\256\241\347\220\206\347\263\273\347\273\237", Q_NULLPTR));
         label->setText(QApplication::translate("MainWindow", "\344\271\246\345\220\215:", Q_NULLPTR));
         label_2->setText(QApplication::translate("MainWindow", "\345\207\272\347\211\210\347\244\276:", Q_NULLPTR));
         label_8->setText(QApplication::translate("MainWindow", "\347\261\273\345\210\253:", Q_NULLPTR));
         label_5->setText(QApplication::translate("MainWindow", "\344\275\234\350\200\205:", Q_NULLPTR));
         label_6->setText(QApplication::translate("MainWindow", "\344\273\267\346\240\274:", Q_NULLPTR));
         label_3->setText(QApplication::translate("MainWindow", "\345\271\264\344\273\275:", Q_NULLPTR));
-        label_7->setText(QApplication::translate("MainWindow", "\342\200\224\342\200\224", Q_NULLPTR));
-        label_4->setText(QApplication::translate("MainWindow", "\342\200\224\342\200\224", Q_NULLPTR));
+        label_7->setText(QApplication::translate("MainWindow", "   \342\200\224", Q_NULLPTR));
+        label_4->setText(QApplication::translate("MainWindow", "   \342\200\224", Q_NULLPTR));
+        comboBox_2->setCurrentText(QString());
         checkButton->setText(QApplication::translate("MainWindow", "\346\237\245\350\257\242", Q_NULLPTR));
-        pushButton_2->setText(QApplication::translate("MainWindow", "\346\270\205\347\251\272", Q_NULLPTR));
+        clearButton->setText(QApplication::translate("MainWindow", "\346\270\205\347\251\272", Q_NULLPTR));
+        pushButton_3->setText(QApplication::translate("MainWindow", "\344\270\252\344\272\272\344\270\255\345\277\203", Q_NULLPTR));
+        borrowButton->setText(QApplication::translate("MainWindow", "\345\200\237\344\271\246", Q_NULLPTR));
+        conditionLabel->setText(QApplication::translate("MainWindow", "\345\275\223\345\211\215\347\212\266\346\200\201\357\274\232", Q_NULLPTR));
+        usernameLabel->setText(QApplication::translate("MainWindow", "\347\224\250\346\210\267\345\220\215\357\274\232", Q_NULLPTR));
+        timeLabel->setText(QApplication::translate("MainWindow", "currenttime", Q_NULLPTR));
     } // retranslateUi
 
 };

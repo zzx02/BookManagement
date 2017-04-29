@@ -1,6 +1,7 @@
 #include "database.h"
 #include <QCryptographicHash>
 #include <QDebug>
+#include <QDateTime>
 
 database::database(QObject *parent) : QObject(parent)
 {
@@ -73,14 +74,15 @@ void database::showSelect(const QString filter, QSqlTableModel* model)
     model->setTable("user_book");
     model->setSort(1, Qt::AscendingOrder);
     model->setFilter(filter);
-    model->setHeaderData(0, Qt::Horizontal, tr("类别"));
-    model->setHeaderData(1, Qt::Horizontal, tr("标题"));
-    model->setHeaderData(2, Qt::Horizontal, tr("作者"));
-    model->setHeaderData(3, Qt::Horizontal, tr("出版年份"));
-    model->setHeaderData(4, Qt::Horizontal, tr("出版社"));
-    model->setHeaderData(5, Qt::Horizontal, tr("价格"));
-    model->setHeaderData(6, Qt::Horizontal, tr("库存"));
-    model->setHeaderData(7, Qt::Horizontal, tr("总量"));
+    model->setHeaderData(0, Qt::Horizontal, tr("编号"));
+    model->setHeaderData(1, Qt::Horizontal, tr("类别"));
+    model->setHeaderData(2, Qt::Horizontal, tr("标题"));
+    model->setHeaderData(3, Qt::Horizontal, tr("作者"));
+    model->setHeaderData(4, Qt::Horizontal, tr("出版年份"));
+    model->setHeaderData(5, Qt::Horizontal, tr("出版社"));
+    model->setHeaderData(6, Qt::Horizontal, tr("价格"));
+    model->setHeaderData(7, Qt::Horizontal, tr("库存"));
+    model->setHeaderData(8, Qt::Horizontal, tr("总量"));
     model->select();
     return ;
 }
@@ -113,6 +115,44 @@ bool database::createUser(const QString username, const QString password, const 
         query.bindValue(":password", md5);
         query.bindValue(":department", department);
         query.exec();
+        return true;
+    }
+    else return false;
+}
+
+bool database::borrowbook(QVariant bookno, QString Username)
+{
+    QDateTime currenttime = QDateTime::currentDateTime();
+    QDateTime returntime = currenttime.addDays(30);
+    if (connect("bookmanagement")){
+        QSqlQuery search;
+        search.prepare("SELECT * FROM borrow WHERE username = :username and bookno = :bookno");
+        search.bindValue(":bookno", bookno.toString());
+        search.bindValue("username", Username);
+        search.exec();
+        if (search.next())
+        {
+            QSqlQuery update;
+            update.prepare("UPDATE borrow set book_count = book_count + 1 where username = :username and bookno = :bookno");
+            update.bindValue(":bookno", bookno.toString());
+            update.bindValue("username", Username);
+            update.exec();
+        }
+        else{
+            QSqlQuery query;
+            query.prepare("INSERT INTO borrow value (:bookno, :username, :bookcount, :borrowtime, :returntime)");
+            query.bindValue(":bookno",bookno.toString());
+            query.bindValue(":username",Username);
+            query.bindValue(":bookcount", 1);
+            query.bindValue(":borrowtime", currenttime.toString("yyyy-MM-dd"));
+            query.bindValue(":returntime", returntime.toString("yyyy-MM-dd"));
+//            qDebug() << bookno.toString() ;
+            query.exec();
+        }
+        QSqlQuery update;
+        update.prepare("UPDATE book set stock = stock - 1 where bookno = :bookno");
+        update.bindValue(":bookno", bookno.toString());
+        update.exec();
         return true;
     }
     else return false;

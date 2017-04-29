@@ -6,9 +6,11 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+
     qDebug() << "Everything OK";
-    MainWindow w;
     LoginDialog login;
+    MainWindow w(&login);
+
     if (login.exec() == QDialog::Accepted)
     {
 
