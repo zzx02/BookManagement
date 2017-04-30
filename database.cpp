@@ -79,7 +79,7 @@ void database::showSelect(const QString filter, QSqlTableModel* model)
     model->setHeaderData(1, Qt::Horizontal, tr("类别"));
     model->setHeaderData(2, Qt::Horizontal, tr("标题"));
     model->setHeaderData(3, Qt::Horizontal, tr("作者"));
-    model->setHeaderData(4, Qt::Horizontal, tr("出版年份"));
+    model->setHeaderData(4, Qt::Horizontal, tr("年份"));
     model->setHeaderData(5, Qt::Horizontal, tr("出版社"));
     model->setHeaderData(6, Qt::Horizontal, tr("价格"));
     model->setHeaderData(7, Qt::Horizontal, tr("库存"));
@@ -229,6 +229,44 @@ bool database::continueBorrow(QString Username, QVariant bookno)
         query.bindValue(":bookno", bookno.toString());
         query.bindValue(":username", Username);
         query.bindValue(":returntime", returntime.addDays(30).toString("yyyy-MM-dd"));
+        query.exec();
+        return true;
+    }
+    else return false;
+}
+
+void database::showUsers(QSqlTableModel* model)
+{
+    model->setTable("all_users");
+    QSqlQuery query;
+    query.prepare("UPDATE all_users SET bookborrows = 0 WHERE bookborrows is NULL");
+    query.exec();
+    model->setSort(1, Qt::AscendingOrder);
+    model->setHeaderData(0, Qt::Horizontal, tr("用户名"));
+    model->setHeaderData(1, Qt::Horizontal, tr("学院"));
+    model->setHeaderData(2, Qt::Horizontal, tr("借阅量"));
+    model->select();
+    return ;
+}
+
+bool database::deleteBook(const QString bookno)
+{
+    if (connect("bookmanagement")){
+        QSqlQuery query;
+        query.prepare("DELETE FROM book WHERE bookno = :bookno");
+        query.bindValue(":bookno", bookno);
+        query.exec();
+        return true;
+    }
+    else return false;
+}
+
+bool database::deleteUser(const QString username)
+{
+    if (connect("bookmanagement")){
+        QSqlQuery query;
+        query.prepare("DELETE FROM users WHERE username = :username");
+        query.bindValue(":username", username);
         query.exec();
         return true;
     }

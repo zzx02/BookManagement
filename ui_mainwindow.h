@@ -74,6 +74,7 @@ public:
     QLabel *usernameLabel;
     QLabel *timeLabel;
     QPushButton *adminCenter;
+    QPushButton *buttonExit;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -281,13 +282,13 @@ public:
         view->setSortingEnabled(true);
         selfCenter = new QPushButton(centralWidget);
         selfCenter->setObjectName(QStringLiteral("selfCenter"));
-        selfCenter->setGeometry(QRect(750, 480, 75, 23));
+        selfCenter->setGeometry(QRect(750, 450, 75, 23));
         borrowButton = new QPushButton(centralWidget);
         borrowButton->setObjectName(QStringLiteral("borrowButton"));
         borrowButton->setGeometry(QRect(750, 100, 75, 23));
         verticalLayoutWidget = new QWidget(centralWidget);
         verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(740, 380, 101, 91));
+        verticalLayoutWidget->setGeometry(QRect(740, 350, 101, 91));
         verticalLayout_2 = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout_2->setSpacing(6);
         verticalLayout_2->setContentsMargins(11, 11, 11, 11);
@@ -310,7 +311,10 @@ public:
 
         adminCenter = new QPushButton(centralWidget);
         adminCenter->setObjectName(QStringLiteral("adminCenter"));
-        adminCenter->setGeometry(QRect(750, 510, 75, 23));
+        adminCenter->setGeometry(QRect(750, 480, 75, 23));
+        buttonExit = new QPushButton(centralWidget);
+        buttonExit->setObjectName(QStringLiteral("buttonExit"));
+        buttonExit->setGeometry(QRect(750, 510, 75, 23));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -348,6 +352,7 @@ public:
         usernameLabel->setText(QApplication::translate("MainWindow", "\347\224\250\346\210\267\345\220\215\357\274\232", Q_NULLPTR));
         timeLabel->setText(QApplication::translate("MainWindow", "currenttime", Q_NULLPTR));
         adminCenter->setText(QApplication::translate("MainWindow", "\347\256\241\347\220\206\345\221\230\345\205\245\345\217\243", Q_NULLPTR));
+        buttonExit->setText(QApplication::translate("MainWindow", "\351\200\200\345\207\272", Q_NULLPTR));
     } // retranslateUi
 
 };

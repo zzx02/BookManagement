@@ -20,13 +20,7 @@ LoginDialog::~LoginDialog()
 
 void LoginDialog::Login_Attempt()
 {
-  if(username->text().trimmed()== tr("admin") &&
-     password->text().trimmed()==tr("admin"))
-  {
-      emit sendusername(username->text().trimmed() );
-      accept();
-  }
-  else if (db.checkLogin(username->text().trimmed(),
+    if (db.checkLogin(username->text().trimmed(),
                              password->text().trimmed()))
   {
       emit sendusername(username->text().trimmed() );

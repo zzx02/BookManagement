@@ -216,7 +216,7 @@
     <property name="geometry">
      <rect>
       <x>750</x>
-      <y>480</y>
+      <y>450</y>
       <width>75</width>
       <height>23</height>
      </rect>
@@ -242,7 +242,7 @@
     <property name="geometry">
      <rect>
       <x>740</x>
-      <y>380</y>
+      <y>350</y>
       <width>101</width>
       <height>91</height>
      </rect>
@@ -275,13 +275,26 @@
     <property name="geometry">
      <rect>
       <x>750</x>
-      <y>510</y>
+      <y>480</y>
       <width>75</width>
       <height>23</height>
      </rect>
     </property>
     <property name="text">
      <string>管理员入口</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="buttonExit">
+    <property name="geometry">
+     <rect>
+      <x>750</x>
+      <y>510</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>退出</string>
     </property>
    </widget>
   </widget>

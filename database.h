@@ -18,6 +18,9 @@ public:
     void showMyBook(const QString filter, QSqlTableModel* model);
     bool ReturnBook(QString Username, QVariant bookno);
     bool continueBorrow(QString Username, QVariant bookno);
+    void showUsers(QSqlTableModel* model);
+    bool deleteBook(const QString bookno);
+    bool deleteUser(const QString username);
 signals:
 
 public slots:

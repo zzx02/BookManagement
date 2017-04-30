@@ -69,9 +69,11 @@ public:
     QPushButton *buttonConfirm;
     QWidget *tab2;
     QTableView *user;
-    QTableView *Allbook_3;
+    QTableView *theirbook;
     QLabel *label_7;
-    QPushButton *pushButton;
+    QPushButton *detailsUser;
+    QPushButton *deleteuser;
+    QPushButton *buttonReturn;
 
     void setupUi(QDialog *AdminCenterdialog)
     {
@@ -86,6 +88,8 @@ public:
         Allbook = new QTableView(tab1);
         Allbook->setObjectName(QStringLiteral("Allbook"));
         Allbook->setGeometry(QRect(10, 10, 370, 511));
+        Allbook->setDragEnabled(true);
+        Allbook->setSortingEnabled(true);
         horizontalLayoutWidget = new QWidget(tab1);
         horizontalLayoutWidget->setObjectName(QStringLiteral("horizontalLayoutWidget"));
         horizontalLayoutWidget->setGeometry(QRect(389, 10, 281, 31));
@@ -115,6 +119,8 @@ public:
         InsertBook = new QTableView(tab1);
         InsertBook->setObjectName(QStringLiteral("InsertBook"));
         InsertBook->setGeometry(QRect(390, 291, 271, 231));
+        InsertBook->setDragEnabled(true);
+        InsertBook->setSortingEnabled(true);
         label_2 = new QLabel(tab1);
         label_2->setObjectName(QStringLiteral("label_2"));
         label_2->setGeometry(QRect(390, 60, 131, 31));
@@ -244,17 +250,25 @@ public:
         user = new QTableView(tab2);
         user->setObjectName(QStringLiteral("user"));
         user->setGeometry(QRect(10, 110, 321, 381));
-        Allbook_3 = new QTableView(tab2);
-        Allbook_3->setObjectName(QStringLiteral("Allbook_3"));
-        Allbook_3->setGeometry(QRect(350, 110, 321, 381));
+        user->setSortingEnabled(true);
+        theirbook = new QTableView(tab2);
+        theirbook->setObjectName(QStringLiteral("theirbook"));
+        theirbook->setGeometry(QRect(350, 110, 321, 381));
+        theirbook->setSortingEnabled(true);
         label_7 = new QLabel(tab2);
         label_7->setObjectName(QStringLiteral("label_7"));
         label_7->setGeometry(QRect(20, 20, 131, 31));
         label_7->setFont(font);
-        pushButton = new QPushButton(tab2);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(300, 500, 75, 23));
+        detailsUser = new QPushButton(tab2);
+        detailsUser->setObjectName(QStringLiteral("detailsUser"));
+        detailsUser->setGeometry(QRect(220, 500, 75, 23));
+        deleteuser = new QPushButton(tab2);
+        deleteuser->setObjectName(QStringLiteral("deleteuser"));
+        deleteuser->setGeometry(QRect(390, 500, 75, 23));
         tabWidget->addTab(tab2, QString());
+        buttonReturn = new QPushButton(AdminCenterdialog);
+        buttonReturn->setObjectName(QStringLiteral("buttonReturn"));
+        buttonReturn->setGeometry(QRect(600, 10, 75, 23));
 
         retranslateUi(AdminCenterdialog);
 
@@ -282,11 +296,13 @@ public:
         multi->setText(QApplication::translate("AdminCenterdialog", "\345\244\232\346\234\254\345\205\245\345\272\223", Q_NULLPTR));
         single->setText(QApplication::translate("AdminCenterdialog", "\345\215\225\346\234\254\345\205\245\345\272\223", Q_NULLPTR));
         clear->setText(QApplication::translate("AdminCenterdialog", "\346\270\205\347\251\272", Q_NULLPTR));
-        buttonConfirm->setText(QApplication::translate("AdminCenterdialog", "\345\244\232\346\234\254\345\205\245\345\272\223", Q_NULLPTR));
+        buttonConfirm->setText(QApplication::translate("AdminCenterdialog", "\347\241\256\350\256\244", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(tab1), QApplication::translate("AdminCenterdialog", "\344\271\246\347\261\215\347\256\241\347\220\206", Q_NULLPTR));
         label_7->setText(QApplication::translate("AdminCenterdialog", "\347\224\250\346\210\267\345\210\227\350\241\250\357\274\232", Q_NULLPTR));
-        pushButton->setText(QApplication::translate("AdminCenterdialog", "\345\210\240\351\231\244\347\224\250\346\210\267", Q_NULLPTR));
+        detailsUser->setText(QApplication::translate("AdminCenterdialog", "\346\237\245\347\234\213\350\257\246\347\273\206", Q_NULLPTR));
+        deleteuser->setText(QApplication::translate("AdminCenterdialog", "\345\210\240\351\231\244\347\224\250\346\210\267", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(tab2), QApplication::translate("AdminCenterdialog", "\347\224\250\346\210\267\347\256\241\347\220\206", Q_NULLPTR));
+        buttonReturn->setText(QApplication::translate("AdminCenterdialog", "\350\277\224\345\233\236\344\270\273\350\217\234\345\215\225", Q_NULLPTR));
     } // retranslateUi
 
 };

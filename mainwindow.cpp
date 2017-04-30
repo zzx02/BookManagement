@@ -26,6 +26,7 @@ MainWindow::MainWindow(QDialog* logindialog, QWidget *parent) :
      connect(borrowButton, &QPushButton::clicked, this, &MainWindow::updateBorrow );
      connect(selfCenter, &QPushButton::clicked, this, &MainWindow::OpenManage);
      connect(adminCenter, &QPushButton::clicked, this, &MainWindow::OpenAdminCenter);
+     connect(buttonExit, &QPushButton::clicked, this, &MainWindow::close);
      connect(login, SIGNAL(sendusername(QString )), this, SLOT(SetUsername(QString )));
 }
 

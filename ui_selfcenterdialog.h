@@ -74,7 +74,7 @@ public:
 
     void retranslateUi(QDialog *Selfcenterdialog)
     {
-        Selfcenterdialog->setWindowTitle(QApplication::translate("Selfcenterdialog", "Dialog", Q_NULLPTR));
+        Selfcenterdialog->setWindowTitle(QApplication::translate("Selfcenterdialog", "个人中心", Q_NULLPTR));
         label->setText(QApplication::translate("Selfcenterdialog", "\344\270\252\344\272\272\344\270\255\345\277\203", Q_NULLPTR));
         label_2->setText(QApplication::translate("Selfcenterdialog", "\346\210\221\347\232\204\345\267\262\345\200\237\344\271\246\347\233\256:", Q_NULLPTR));
         returnButton->setText(QApplication::translate("Selfcenterdialog", "\345\275\222\350\277\230", Q_NULLPTR));
