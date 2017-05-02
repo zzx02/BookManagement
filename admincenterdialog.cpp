@@ -149,7 +149,7 @@ void AdminCenterdialog::Singlebook()
     QString new_price = price->text();
     QString new_publisher = publisher->text();
     QString new_category = category->text();
-
+    New_Refresh();
     if (new_bookno == "" || new_author == "" || new_year == "" || new_number =="" ||
             new_title == "" || new_price == "" || new_publisher == "" || new_category == "")
     {
@@ -201,6 +201,7 @@ void AdminCenterdialog::Multibook()
     }
     QStringList list = Alltext.split("\n");
     QStringList list2;
+    New_Refresh();
     int row = model_tobeinsert->rowCount();
     foreach(Alltext, list)
     {
@@ -311,3 +312,26 @@ void AdminCenterdialog::UserDelete()
     }
 }
 
+void AdminCenterdialog::New_Refresh()
+{
+    model_tobeinsert = new QSqlTableModel;
+    model_tobeinsert->setTable("book");
+    model_tobeinsert->setFilter("bookno < 0");
+    model_tobeinsert->setHeaderData(0, Qt::Horizontal, tr("编号"));
+    model_tobeinsert->setHeaderData(1, Qt::Horizontal, tr("类别"));
+    model_tobeinsert->setHeaderData(2, Qt::Horizontal, tr("标题"));
+    model_tobeinsert->setHeaderData(3, Qt::Horizontal, tr("作者"));
+    model_tobeinsert->setHeaderData(4, Qt::Horizontal, tr("年份"));
+    model_tobeinsert->setHeaderData(5, Qt::Horizontal, tr("出版社"));
+    model_tobeinsert->setHeaderData(6, Qt::Horizontal, tr("价格"));
+    model_tobeinsert->setHeaderData(7, Qt::Horizontal, tr("入库时间"));
+    model_tobeinsert->setHeaderData(8, Qt::Horizontal, tr("库存"));
+    model_tobeinsert->setHeaderData(9, Qt::Horizontal, tr("总量"));
+    model_tobeinsert->select();
+    InsertBook->setModel(model_tobeinsert);
+    InsertBook->setSelectionMode(QAbstractItemView::SingleSelection);
+    InsertBook->setSelectionBehavior(QAbstractItemView::SelectRows);
+    InsertBook->resizeColumnsToContents();
+    clearText();
+    searchBook();
+}

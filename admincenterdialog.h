@@ -31,6 +31,7 @@ private slots:
     void Refresh();
     void Multibook();
     void UserDelete();
+    void New_Refresh();
 };
 
 #endif // ADMINCENTERDIALOG_H

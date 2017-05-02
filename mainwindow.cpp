@@ -61,7 +61,6 @@ void MainWindow::searchBook()
     else if (price2->text().compare("") != 0)
         Filter += " and price <= " + price2->text();
 
-     qDebug() << Filter;
     mytable = new QSqlTableModel;
     db.showSelect(Filter, mytable);
     view -> setModel(mytable);
@@ -69,8 +68,8 @@ void MainWindow::searchBook()
     view->setSelectionMode(QAbstractItemView::SingleSelection);
     view->setSelectionBehavior(QAbstractItemView::SelectRows);
     view->setColumnWidth(0, 80);
-    view->setColumnWidth(1, 100);
-    view->setColumnWidth(2, 100);
+    view->setColumnWidth(1, 80);
+    view->setColumnWidth(2, 80);
     view->setColumnWidth(3, 80);
     view->setColumnWidth(4, 80);
     view->setColumnWidth(5, 80);
